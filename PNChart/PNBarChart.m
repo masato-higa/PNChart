@@ -36,7 +36,7 @@
         _labels              = [NSMutableArray array];
         _bars                = [NSMutableArray array];
         _xLabelSkip          = 1;
-        _yLabelSum           = 4;
+        _yLabelSum           = 5;
         _labelMarginTop      = 0;
         _chartMargin         = 15.0;
         _barRadius           = 2.0;
@@ -64,7 +64,7 @@
 
 - (void)getYValueMax:(NSArray *)yLabels
 {
-    int max = [[yLabels valueForKeyPath:@"@max.intValue"] intValue];
+    int max = 0;
     
     _yValueMax = (int)max;
     
