@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "PNChartDelegate.h"
-#import "PNBar.h"
 
 #define xLabelMargin 15
 #define yLabelMargin 15
@@ -28,9 +27,6 @@ typedef NSString *(^PNyLabelFromatter)(CGFloat yLabelValue);
 @property (nonatomic) NSArray *xLabels;
 @property (nonatomic) NSArray *yLabels;
 @property (nonatomic) NSArray *yValues;
-
-@property (nonatomic) NSMutableArray * bars;
-
 @property (nonatomic) CGFloat xLabelWidth;
 @property (nonatomic) int yValueMax;
 @property (nonatomic) UIColor *strokeColor;
@@ -109,7 +105,7 @@ typedef NSString *(^PNyLabelFromatter)(CGFloat yLabelValue);
 @property (nonatomic) NSInteger xLabelSkip;
 
 /*
- yLabelSum define the label sum number
+ yLabelSum define the label skip number
  */
 @property (nonatomic) NSInteger yLabelSum;
 
@@ -117,17 +113,6 @@ typedef NSString *(^PNyLabelFromatter)(CGFloat yLabelValue);
  yMaxValue define the max value of the chart
  */
 @property (nonatomic) CGFloat yMaxValue;
-
-/*
- yMinValue define the min value of the chart
- */
-@property (nonatomic) CGFloat yMinValue;
-
-/*
- switch to indicate that the bar should be filled as a gradient
- */
-@property (nonatomic) UIColor *barColorGradientStart;
-
 
 @property (nonatomic, retain) id<PNChartDelegate> delegate;
 

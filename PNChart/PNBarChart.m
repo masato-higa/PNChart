@@ -9,9 +9,10 @@
 #import "PNBarChart.h"
 #import "PNColor.h"
 #import "PNChartLabel.h"
-
+#import "PNBar.h"
 
 @interface PNBarChart () {
+    NSMutableArray *_bars;
     NSMutableArray *_labels;
 }
 
@@ -64,13 +65,22 @@
 
 - (void)getYValueMax:(NSArray *)yLabels
 {
-    int max = 0;
+    NSInteger max = 50;
+    
+    for (NSString *valueString in yLabels) {
+        NSInteger value = [valueString integerValue];
+        
+        if (value > max) {
+            max = value;
+        }
+    }
+    
+    //Min value for Y label
+    if (max < 5) {
+        max = 5;
+    }
     
     _yValueMax = (int)max;
-    
-    if (_yValueMax == 0) {
-        _yValueMax = _yMinValue;
-    }
 }
 
 
@@ -156,15 +166,10 @@
     CGFloat chartCavanHeight = self.frame.size.height - _chartMargin * 2 - xLabelHeight;
     NSInteger index = 0;
 
-    for (NSNumber *valueString in _yValues) {
+    for (NSString *valueString in _yValues) {
         float value = [valueString floatValue];
 
         float grade = (float)value / (float)_yValueMax;
-        
-        if (isnan(grade)) {
-            grade = 0;
-        }
-        
         PNBar *bar;
         CGFloat barWidth;
         CGFloat barXPosition;
@@ -205,13 +210,8 @@
         //Height Of Bar
         bar.grade = grade;
         
-        // Add gradient
-        bar.barColorGradientStart = _barColorGradientStart;
-        
-
         //For Click Index
         bar.tag = index;
-        
         
         [_bars addObject:bar];
         [self addSubview:bar];
