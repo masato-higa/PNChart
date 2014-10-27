@@ -65,7 +65,7 @@
 
 - (void)getYValueMax:(NSArray *)yLabels
 {
-    NSInteger max = 50;
+    NSInteger max = self.yLabelsMax;
     
     for (NSString *valueString in yLabels) {
         NSInteger value = [valueString integerValue];

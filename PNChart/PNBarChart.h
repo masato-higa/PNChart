@@ -31,7 +31,7 @@ typedef NSString *(^PNyLabelFromatter)(CGFloat yLabelValue);
 @property (nonatomic) int yValueMax;
 @property (nonatomic) UIColor *strokeColor;
 @property (nonatomic) NSArray *strokeColors;
-
+@property (nonatomic) NSInteger yLabelsMax;
 
 /*
  chartMargin changes chart margin
